@@ -8,3 +8,24 @@
 body {
     margin: 0;
 }
+
+.allHeight,
+.flexPlacement,
+.main-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.allHeight {
+    min-height: 100vh;
+}
+
+.main-content {
+    flex: 1;
+}
+
+.main-content {
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}

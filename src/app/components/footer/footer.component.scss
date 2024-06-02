@@ -1,7 +1,10 @@
+@import "../../../styles/Utils/Variables.scss";
+
 .footer {
     display: flex;
     justify-content: center;
-    padding: 2rem 0 1.5rem;
+    padding: 3rem 0;
+    font-size: 20px;
     &-text {
         margin: 0;
         padding: 0;

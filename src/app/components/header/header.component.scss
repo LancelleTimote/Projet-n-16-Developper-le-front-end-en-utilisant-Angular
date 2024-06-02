@@ -1,0 +1,11 @@
+@import "../../../styles/Utils/Variables.scss";
+
+.header {
+    margin: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    &_logo {
+        height: 75px;
+    }
+}

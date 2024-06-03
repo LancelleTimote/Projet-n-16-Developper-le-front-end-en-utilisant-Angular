@@ -1,0 +1,11 @@
+<div *ngIf="countryData">
+    <h2>{{ countryData.country }}</h2>
+    <p>Number of participations in the Olympics: {{ countryData.participations.length }}</p>
+    <p>Total medals won: {{ getTotalMedals() }}</p>
+    <p>Total athletes presented: {{ getTotalAthletes() }}</p>
+
+    <ngx-charts-bar-vertical [results]="medalData" [view]="view" [legend]="false" [xAxis]="true" [yAxis]="true" [showXAxisLabel]="true" [showYAxisLabel]="true" [xAxisLabel]="'Year'" [yAxisLabel]="'Medals'"> </ngx-charts-bar-vertical>
+</div>
+<div *ngIf="!countryData">
+    <p>Country data not found.</p>
+</div>

@@ -1,32 +1,32 @@
-import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { catchError, tap } from 'rxjs/operators';
-import { Olympic } from '../models/Olympic';
+import { HttpClient } from "@angular/common/http";
+import { Injectable } from "@angular/core";
+import { BehaviorSubject, Observable, of } from "rxjs";
+import { catchError, tap } from "rxjs/operators";
+import { Olympic } from "../models/Olympic";
 
 @Injectable({
-  providedIn: 'root',
+    providedIn: "root",
 })
 export class OlympicService {
-  private olympicUrl = './assets/mock/olympic.json';
-  private olympics$ = new BehaviorSubject<Olympic[] | null>(null);
+    private olympicUrl = "./assets/mock/olympic.json";
+    private olympics$ = new BehaviorSubject<Olympic[] | null>(null);
 
-  constructor(private http: HttpClient) {}
+    constructor(private http: HttpClient) {
+        this.loadInitialData().subscribe(); // Ensure initial data is loaded
+    }
 
-  loadInitialData(): Observable<Olympic[]> {
-    return this.http.get<Olympic[]>(this.olympicUrl).pipe(
-      tap((value: Olympic[]) => this.olympics$.next(value)),
-      catchError((error, caught) => {
-        // TODO: improve error handling
-        console.error(error);
-        // can be useful to end loading state and let the user know something went wrong
-        this.olympics$.next(null);
-        return caught;
-      })
-    );
-  }
+    loadInitialData(): Observable<Olympic[]> {
+        return this.http.get<Olympic[]>(this.olympicUrl).pipe(
+            tap((value: Olympic[]) => this.olympics$.next(value)),
+            catchError((error) => {
+                console.error("Error fetching Olympic data", error);
+                this.olympics$.next(null);
+                return of([]); // Return an observable of an empty array instead of null
+            })
+        );
+    }
 
-  getOlympics(): Observable<Olympic[] | null> {
-    return this.olympics$.asObservable();
-  }
+    getOlympics(): Observable<Olympic[] | null> {
+        return this.olympics$.asObservable();
+    }
 }

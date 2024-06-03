@@ -1,9 +1,21 @@
 <div class="allHeight flexPlacement">
     <app-header></app-header>
     <div class="main-content">
-        <h2>Olympic games app</h2>
+        <h1>Olympic games app</h1>
         <hr />
         <p>{{ (olympics$ | async)?.length }} data loaded</p>
+        <hr />
+        <h2>Medals per Country</h2>
+        <div class="stats-container">
+            <div class="stat-box">
+                <p>Number of JOs {{ numberOfGames }}</p>
+            </div>
+            <div class="stat-box">
+                <p>Number of countries {{ numberOfCountries }}</p>
+            </div>
+        </div>
+        <hr />
+        <app-pie-chart></app-pie-chart>
     </div>
     <app-footer></app-footer>
 </div>

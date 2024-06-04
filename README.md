@@ -1,29 +1,78 @@
-# OlympicGamesStarter
+# Projet n°15 : Passer une librairie jQuery vers React
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.1.3.
+![GitHub contributors](https://img.shields.io/github/contributors/LancelleTimote/Projet-n-16-Developper-le-front-end-en-utilisant-Angular?style=for-the-badge&color=green)
+![GitHub language count](https://img.shields.io/github/languages/count/LancelleTimote/Projet-n-16-Developper-le-front-end-en-utilisant-Angular?style=for-the-badge)
+![GitHub repo size](https://img.shields.io/github/repo-size/LancelleTimote/Projet-n-16-Developper-le-front-end-en-utilisant-Angular?style=for-the-badge)
+![GitHub last commit](https://img.shields.io/github/last-commit/LancelleTimote/Projet-n-16-Developper-le-front-end-en-utilisant-Angular?style=for-the-badge)
+![GitHub License](https://img.shields.io/github/license/LancelleTimote/Projet-n-16-Developper-le-front-end-en-utilisant-Angular?style=for-the-badge)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/timote-lancelle-devweb/)
 
-Don't forget to install your node_modules before starting (`npm install`).
+## :mag: Aperçu
 
-## Development server
+![Aperçu du site web](visuel_projet/visuel_projet.png)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## :bookmark_tabs: Sommaire
 
-## Build
+<ol>
+    <li><a href="#sujet">Sujet</a></li>
+    <li><a href="#demandes_respecter">Demandes à respecter</a></li>
+    <li><a href="#objectifs_projet">Objectifs du projet</a></li>
+    <li><a href="#technologies_utilisees">Technologies utilisées</a></li>
+    <li><a href="#prerequis">Prérequis</a></li>
+    <li><a href="#installation">Installation</a></li>
+    <li><a href="#utilisation_siteweb">Utilisation du site web</a></li>
+    <li><a href="#auteurs_contributeurs">Auteurs et contributeurs</a></li>
+    <li><a href="#licence">Licence</a></li>
+</ol>
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## :page_facing_up: 1. Sujet <a name = "sujet"></a>
 
-## Where to start
+Vous travaillez depuis quelques mois pour une ESN nommée DelivWeb, spécialisée dans le développement web.
 
-As you can see, an architecture has already been defined for the project. It is just a suggestion, you can choose to use your own. The predefined architecture includes (in addition to the default angular architecture) the following:
+Votre manager, Jeanette, vous a annoncé ce matin le projet sur lequel vous travaillerez par la suite.
 
-- `components` folder: contains every reusable components
-- `pages` folder: contains components used for routing
-- `core` folder: contains the business logic (`services` and `models` folders)
+Il s’agit d’un nouveau projet pour le compte de la chaîne de télévision TéléSport.
 
-I suggest you to start by understanding this starter code. Pay an extra attention to the `app-routing.module.ts` and the `olympic.service.ts`.
+Ces derniers souhaitent créer une nouvelle application web interactive pour préparer les prochains Jeux Olympiques.
 
-Once mastered, you should continue by creating the typescript interfaces inside the `models` folder. As you can see I already created two files corresponding to the data included inside the `olympic.json`. With your interfaces, improve the code by replacing every `any` by the corresponding interface.
+## :memo: 2. Demandes à respecter <a name = "demandes_respecter"></a>
 
-You're now ready to implement the requested features.
+-   Faire la partie front-end de l'application web en utilisant Angular.js ;
+-   L'application devra être responsive (s'adapter aux différentes tailles d'écrans) ;
+-   Utiliser des services pour réaliser les appels HTTP ;
+-   Utiliser RxJS et les observables ;
+-   Unsubscribe les observables ;
+-   Typer le code de manière à ne plus avoir de “any”.
 
-Good luck!
+## :checkered_flag: 3. Objectifs du projet <a name = "objectifs_projet"></a>
+
+-   Apprendre à utiliser Angular (gestion des composants, système de routing, utilisation de bibliothèques Angular, etc...);
+
+## :computer: 4. Technologies utilisées <a name = "technologies_utilisees"></a>
+
+-   HTML
+-   CSS / Sass
+-   JavaScript / Angular.js
+-   Git & GitHub
+
+## :exclamation: 5. Prérequis <a name = "prerequis"></a>
+
+Aucun
+
+## :wrench: 6. Installation <a name = "installation"></a>
+
+-   Cloner ce repository.
+-   Pour installer les différents packages, dans le terminal à partir du dossier front-end, exécuter npm install.
+
+## :question: 7. Utilisation du site web <a name = "utilisation_siteweb"></a>
+
+-   Dans le terminal à partir du dossier front-end, exécuter ng serve ;
+-   L'application est disponible a l'adresse suivante : http://localhost:4200/
+
+## :beers: 8. Auteurs et Contributeurs <a name = "auteurs_contributeurs"></a>
+
+Timoté Lancelle : [GitHub](https://github.com/LancelleTimote) / [LinkedIn](https://www.linkedin.com/in/timote-lancelle-devweb/)
+
+## :page_with_curl: 9. Licence <a name = "licence"></a>
+
+Distribué sous la licence MIT. Voir le fichier [LICENSE](LICENSE) pour plus d'informations.

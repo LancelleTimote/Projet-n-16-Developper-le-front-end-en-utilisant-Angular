@@ -3,15 +3,12 @@
     <div class="indicator-container">
         <p class="graph-indicator">Number of entries<br />{{ countryData.participations.length }}</p>
         <p class="graph-indicator">Total number medals<br />{{ getTotalMedals() }}</p>
-        <p class="graph-indicator">Total number of athletes<br /> {{ getTotalAthletes() }}</p>
+        <p class="graph-indicator">
+            Total number of athletes<br />
+            {{ getTotalAthletes() }}
+        </p>
     </div>
     <div class="chart-container">
-        <ngx-charts-line-chart [view]="view" [scheme]="'vivid'" [results]="medalData" [xAxis]="true" [yAxis]="true"
-            [legend]="false" [showXAxisLabel]="true" [showYAxisLabel]="false" [xAxisLabel]="'Dates'"
-            [yAxisLabel]="'Medals'" [autoScale]="true">
-        </ngx-charts-line-chart>
+        <ngx-charts-line-chart [view]="view" [scheme]="'vivid'" [results]="medalData" [xAxis]="true" [yAxis]="true" [legend]="false" [showXAxisLabel]="true" [showYAxisLabel]="false" [xAxisLabel]="'Dates'" [yAxisLabel]="'Medals'" [autoScale]="true"> </ngx-charts-line-chart>
     </div>
-</div>
-<div *ngIf="!countryData">
-    <p>Country data not found.</p>
 </div>

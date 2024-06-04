@@ -12,19 +12,21 @@ import { NgxChartsModule } from "@swimlane/ngx-charts";
 export class CountryDetailComponent implements OnChanges {
     @Input() countryData: Olympic | null = null;
     medalData: any[] = [];
-    view: [number, number] = [700, 400];
+    view: [number, number] = [600, 300];
 
     ngOnChanges(changes: SimpleChanges): void {
         if (changes["countryData"] && this.countryData) {
-          this.medalData = [{
-            name: this.countryData.country,
-            series: this.countryData.participations.map(participation => ({
-              name: participation.year.toString(),
-              value: participation.medalsCount
-            }))
-          }];
+            this.medalData = [
+                {
+                    name: this.countryData.country,
+                    series: this.countryData.participations.map((participation) => ({
+                        name: participation.year.toString(),
+                        value: participation.medalsCount,
+                    })),
+                },
+            ];
         }
-      }
+    }
 
     getTotalMedals(): number {
         return this.countryData?.participations.reduce((total, p) => total + p.medalsCount, 0) || 0;

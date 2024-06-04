@@ -1,16 +1,16 @@
 import { Component, OnInit } from "@angular/core";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, RouterModule } from "@angular/router";
 import { OlympicService } from "../../core/services/olympic.service";
 import { Olympic } from "../../core/models/Olympic";
 import { CountryDetailComponent } from "../../components/country-detail/country-detail.component";
 import { CommonModule } from "@angular/common";
-import { HeaderComponent } from 'src/app/components/header/header.component';
-import { FooterComponent } from 'src/app/components/footer/footer.component';
+import { HeaderComponent } from "src/app/components/header/header.component";
+import { FooterComponent } from "src/app/components/footer/footer.component";
 
 @Component({
     selector: "app-detail",
     standalone: true,
-    imports: [CommonModule, CountryDetailComponent, HeaderComponent, FooterComponent],
+    imports: [CommonModule, CountryDetailComponent, HeaderComponent, FooterComponent, RouterModule],
     templateUrl: "./detail.component.html",
     styleUrl: "./detail.component.scss",
 })

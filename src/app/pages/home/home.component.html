@@ -3,15 +3,13 @@
     <div class="main-content">
         <h1>Olympic games app</h1>
         <hr />
-        <p>{{ (olympics$ | async)?.length }} data loaded</p>
-        <hr />
-        <h2>Medals per Country</h2>
+        <h2 class="graph-title">Medals per Country</h2>
         <div class="stats-container">
-            <div class="stat-box">
-                <p>Number of JOs {{ numberOfGames }}</p>
+            <div class="graph-indicator">
+                <p>Number of JOs<br />{{ numberOfGames }}</p>
             </div>
-            <div class="stat-box">
-                <p>Number of countries {{ numberOfCountries }}</p>
+            <div class="graph-indicator">
+                <p>Number of countries<br />{{ numberOfCountries }}</p>
             </div>
         </div>
         <hr />

@@ -1,6 +1,12 @@
-<div *ngIf="countryData">
-    <app-country-detail [countryData]="countryData"></app-country-detail>
-</div>
-<div *ngIf="!countryData">
-    <p>Country data not found.</p>
+<div class="allHeight flexPlacement">
+    <app-header></app-header>
+    <div class="main-content">
+        <div *ngIf="countryData">
+            <app-country-detail [countryData]="countryData"></app-country-detail>
+        </div>
+        <div *ngIf="!countryData">
+            <p>Country data not found.</p>
+        </div>
+    </div>
+    <app-footer></app-footer>
 </div>

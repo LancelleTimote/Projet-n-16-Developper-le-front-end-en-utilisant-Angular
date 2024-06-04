@@ -12,7 +12,7 @@ export class OlympicService {
     private olympics$ = new BehaviorSubject<Olympic[] | null>(null);
 
     constructor(private http: HttpClient) {
-        this.loadInitialData().subscribe(); // Ensure initial data is loaded
+        this.loadInitialData().subscribe();
     }
 
     loadInitialData(): Observable<Olympic[]> {
@@ -21,7 +21,7 @@ export class OlympicService {
             catchError((error) => {
                 console.error("Error fetching Olympic data", error);
                 this.olympics$.next(null);
-                return of([]); // Return an observable of an empty array instead of null
+                return of([]);
             })
         );
     }

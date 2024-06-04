@@ -1,3 +1,5 @@
+@import "../Utils/Variables.scss";
+
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400&display=swap");
 
 * {
@@ -21,11 +23,28 @@ body {
 }
 
 .main-content {
-    flex: 1;
-}
-
-.main-content {
     align-items: center;
     justify-content: center;
     padding: 20px;
+    flex: 1;
+}
+
+.graph-title {
+    background-color: $tertiary-color;
+    color: $primary-color;
+    border-radius: 10px;
+    padding: 7px;
+}
+
+.graph-indicator {
+    padding: 10px;
+    margin: 10px;
+    border-radius: 10px;
+    border: $tertiary-color 2px solid;
+    text-align: center;
+}
+
+.indicator-container {
+    display: flex;
+    justify-content: space-between;
 }

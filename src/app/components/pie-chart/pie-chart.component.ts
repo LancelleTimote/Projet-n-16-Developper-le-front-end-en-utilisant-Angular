@@ -15,7 +15,6 @@ import { CommonModule } from "@angular/common";
 export class PieChartComponent implements OnInit {
     data: any[] = [];
     view: [number, number] = [700, 400];
-    legendPosition: any = "below";
 
     constructor(private olympicService: OlympicService, private router: Router) {}
 

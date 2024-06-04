@@ -16,12 +16,15 @@ export class CountryDetailComponent implements OnChanges {
 
     ngOnChanges(changes: SimpleChanges): void {
         if (changes["countryData"] && this.countryData) {
-            this.medalData = this.countryData.participations.map((participation) => ({
-                name: participation.year.toString(),
-                value: participation.medalsCount,
-            }));
+          this.medalData = [{
+            name: this.countryData.country,
+            series: this.countryData.participations.map(participation => ({
+              name: participation.year.toString(),
+              value: participation.medalsCount
+            }))
+          }];
         }
-    }
+      }
 
     getTotalMedals(): number {
         return this.countryData?.participations.reduce((total, p) => total + p.medalsCount, 0) || 0;

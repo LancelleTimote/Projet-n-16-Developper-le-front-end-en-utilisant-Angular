@@ -4,6 +4,8 @@ import { OlympicService } from "../../core/services/olympic.service";
 import { NgxChartsModule } from "@swimlane/ngx-charts";
 import { Olympic } from "src/app/core/models/Olympic";
 import { CommonModule } from "@angular/common";
+import { takeUntil } from "rxjs/operators";
+import { Subject } from "rxjs";
 
 @Component({
     selector: "app-pie-chart",
@@ -15,20 +17,24 @@ import { CommonModule } from "@angular/common";
 export class PieChartComponent implements OnInit {
     data: any[] = [];
     view: [number, number] = [700, 400];
+    private unsubscribe$ = new Subject<void>();
 
     constructor(private olympicService: OlympicService, private router: Router) {}
 
     ngOnInit(): void {
-        this.olympicService.getOlympics().subscribe((olympics: Olympic[] | null) => {
-            if (olympics) {
-                this.data = olympics.map((country) => ({
-                    name: country.country,
-                    value: country.participations.reduce((total, participation) => total + participation.medalsCount, 0),
-                }));
-            } else {
-                console.error("No data received from OlympicService");
-            }
-        });
+        this.olympicService
+            .getOlympics()
+            .pipe(takeUntil(this.unsubscribe$))
+            .subscribe((olympics: Olympic[] | null) => {
+                if (olympics) {
+                    this.data = olympics.map((country) => ({
+                        name: country.country,
+                        value: country.participations.reduce((total, participation) => total + participation.medalsCount, 0),
+                    }));
+                } else {
+                    console.error("No data received from OlympicService");
+                }
+            });
     }
 
     onSelect(event: any): void {
@@ -38,5 +44,10 @@ export class PieChartComponent implements OnInit {
         } else {
             console.error("Selected country not found in data");
         }
+    }
+
+    ngOnDestroy(): void {
+        this.unsubscribe$.next();
+        this.unsubscribe$.complete();
     }
 }

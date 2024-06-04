@@ -1,7 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { BehaviorSubject, Observable, of } from "rxjs";
-import { catchError, tap } from "rxjs/operators";
+import { BehaviorSubject, Observable, of, Subject } from "rxjs";
+import { catchError, takeUntil, tap } from "rxjs/operators";
 import { Olympic } from "../models/Olympic";
 
 @Injectable({
@@ -10,6 +10,7 @@ import { Olympic } from "../models/Olympic";
 export class OlympicService {
     private olympicUrl = "./assets/mock/olympic.json";
     private olympics$ = new BehaviorSubject<Olympic[] | null>(null);
+    private unsubscribe$ = new Subject<void>(); // Ajout du sujet de désabonnement
 
     constructor(private http: HttpClient) {
         this.loadInitialData().subscribe();
@@ -22,11 +23,17 @@ export class OlympicService {
                 console.error("Error fetching Olympic data", error);
                 this.olympics$.next(null);
                 return of([]);
-            })
+            }),
+            takeUntil(this.unsubscribe$)
         );
     }
 
     getOlympics(): Observable<Olympic[] | null> {
-        return this.olympics$.asObservable();
+        return this.olympics$.asObservable().pipe(takeUntil(this.unsubscribe$));
+    }
+
+    ngOnDestroy(): void {
+        this.unsubscribe$.next();
+        this.unsubscribe$.complete();
     }
 }

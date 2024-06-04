@@ -6,6 +6,8 @@ import { CountryDetailComponent } from "../../components/country-detail/country-
 import { CommonModule } from "@angular/common";
 import { HeaderComponent } from "src/app/components/header/header.component";
 import { FooterComponent } from "src/app/components/footer/footer.component";
+import { takeUntil } from "rxjs/operators";
+import { Subject } from "rxjs";
 
 @Component({
     selector: "app-detail",
@@ -17,15 +19,24 @@ import { FooterComponent } from "src/app/components/footer/footer.component";
 export class DetailComponent implements OnInit {
     countryName: string | null = null;
     countryData: Olympic | null = null;
+    private unsubscribe$ = new Subject<void>();
 
     constructor(private route: ActivatedRoute, private olympicService: OlympicService) {}
 
     ngOnInit(): void {
         this.countryName = this.route.snapshot.paramMap.get("countryName");
-        this.olympicService.getOlympics().subscribe((olympics: Olympic[] | null) => {
-            if (olympics && this.countryName) {
-                this.countryData = olympics.find((country) => country.country === this.countryName) || null;
-            }
-        });
+        this.olympicService
+            .getOlympics()
+            .pipe(takeUntil(this.unsubscribe$))
+            .subscribe((olympics: Olympic[] | null) => {
+                if (olympics && this.countryName) {
+                    this.countryData = olympics.find((country) => country.country === this.countryName) || null;
+                }
+            });
+    }
+
+    ngOnDestroy(): void {
+        this.unsubscribe$.next();
+        this.unsubscribe$.complete();
     }
 }

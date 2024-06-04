@@ -1,6 +1,7 @@
 import { Component, Input, OnChanges, SimpleChanges } from "@angular/core";
 import { Olympic } from "../../core/models/Olympic";
 import { NgxChartsModule } from "@swimlane/ngx-charts";
+import { Subject } from "rxjs";
 
 @Component({
     selector: "app-country-detail",
@@ -13,6 +14,7 @@ export class CountryDetailComponent implements OnChanges {
     @Input() countryData: Olympic | null = null;
     medalData: any[] = [];
     view: [number, number] = [600, 300];
+    private unsubscribe$ = new Subject<void>();
 
     ngOnChanges(changes: SimpleChanges): void {
         if (changes["countryData"] && this.countryData) {
@@ -34,5 +36,10 @@ export class CountryDetailComponent implements OnChanges {
 
     getTotalAthletes(): number {
         return this.countryData?.participations.reduce((total, p) => total + p.athleteCount, 0) || 0;
+    }
+
+    ngOnDestroy(): void {
+        this.unsubscribe$.next();
+        this.unsubscribe$.complete();
     }
 }

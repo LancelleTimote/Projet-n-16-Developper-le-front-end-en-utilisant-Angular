@@ -1,4 +1,4 @@
-# Projet n°15 : Passer une librairie jQuery vers React
+# Projet n°16 : Developper le front-end en utilisant Angular
 
 ![GitHub contributors](https://img.shields.io/github/contributors/LancelleTimote/Projet-n-16-Developper-le-front-end-en-utilisant-Angular?style=for-the-badge&color=green)
 ![GitHub language count](https://img.shields.io/github/languages/count/LancelleTimote/Projet-n-16-Developper-le-front-end-en-utilisant-Angular?style=for-the-badge)

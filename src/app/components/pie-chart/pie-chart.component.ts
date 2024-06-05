@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, OnDestroy } from "@angular/core";
 import { Router } from "@angular/router";
 import { OlympicService } from "../../core/services/olympic.service";
 import { NgxChartsModule } from "@swimlane/ngx-charts";
@@ -14,7 +14,7 @@ import { Subject } from "rxjs";
     templateUrl: "./pie-chart.component.html",
     styleUrls: ["./pie-chart.component.scss"],
 })
-export class PieChartComponent implements OnInit {
+export class PieChartComponent implements OnInit, OnDestroy {
     data: any[] = [];
     view: [number, number] = [700, 400];
     private unsubscribe$ = new Subject<void>();

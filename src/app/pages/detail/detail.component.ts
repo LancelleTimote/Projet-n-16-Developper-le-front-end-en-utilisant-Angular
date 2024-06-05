@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, OnDestroy } from "@angular/core";
 import { ActivatedRoute, RouterModule } from "@angular/router";
 import { OlympicService } from "../../core/services/olympic.service";
 import { Olympic } from "../../core/models/Olympic";
@@ -16,7 +16,7 @@ import { Subject } from "rxjs";
     templateUrl: "./detail.component.html",
     styleUrl: "./detail.component.scss",
 })
-export class DetailComponent implements OnInit {
+export class DetailComponent implements OnInit, OnDestroy {
     countryName: string | null = null;
     countryData: Olympic | null = null;
     private unsubscribe$ = new Subject<void>();

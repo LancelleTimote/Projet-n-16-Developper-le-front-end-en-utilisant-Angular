@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, SimpleChanges } from "@angular/core";
+import { Component, Input, OnChanges, SimpleChanges, OnDestroy } from "@angular/core";
 import { Olympic } from "../../core/models/Olympic";
 import { NgxChartsModule } from "@swimlane/ngx-charts";
 import { Subject } from "rxjs";
@@ -10,7 +10,7 @@ import { Subject } from "rxjs";
     templateUrl: "./country-detail.component.html",
     styleUrls: ["./country-detail.component.scss"],
 })
-export class CountryDetailComponent implements OnChanges {
+export class CountryDetailComponent implements OnChanges, OnDestroy {
     @Input() countryData: Olympic | null = null;
     medalData: any[] = [];
     view: [number, number] = [600, 300];

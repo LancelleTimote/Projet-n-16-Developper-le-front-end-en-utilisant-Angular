@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, OnDestroy } from "@angular/core";
 import { Observable, Subject } from "rxjs";
 import { OlympicService } from "src/app/core/services/olympic.service";
 import { HeaderComponent } from "../../components/header/header.component";
@@ -16,7 +16,7 @@ import { takeUntil } from "rxjs/operators";
     standalone: true,
     imports: [CommonModule, HeaderComponent, FooterComponent, PieChartComponent, NgxChartsModule],
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, OnDestroy {
     public olympics$: Observable<Olympic[] | null> = this.olympicService.getOlympics();
     public numberOfGames: number = 0;
     public numberOfCountries: number = 0;

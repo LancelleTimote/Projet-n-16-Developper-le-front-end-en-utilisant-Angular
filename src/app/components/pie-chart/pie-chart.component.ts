@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from "@angular/core";
+import { Component, OnInit, OnDestroy, HostListener } from "@angular/core";
 import { Router } from "@angular/router";
 import { OlympicService } from "../../core/services/olympic.service";
 import { NgxChartsModule } from "@swimlane/ngx-charts";
@@ -16,12 +16,13 @@ import { Subject } from "rxjs";
 })
 export class PieChartComponent implements OnInit, OnDestroy {
     data: any[] = [];
-    view: [number, number] = [700, 400];
+    view: [number, number] = [700, 200];
     private unsubscribe$ = new Subject<void>();
 
     constructor(private olympicService: OlympicService, private router: Router) {}
 
     ngOnInit(): void {
+        this.updateView(window.innerWidth);
         this.olympicService
             .getOlympics()
             .pipe(takeUntil(this.unsubscribe$))
@@ -43,6 +44,19 @@ export class PieChartComponent implements OnInit, OnDestroy {
             this.router.navigate(["/country-detail", selectedCountry]);
         } else {
             console.error("Selected country not found in data");
+        }
+    }
+
+    @HostListener("window:resize", ["$event"])
+    onResize(event: any) {
+        this.updateView(event.target.innerWidth);
+    }
+
+    private updateView(width: number) {
+        if (width <= 425) {
+            this.view = [700, 200];
+        } else {
+            this.view = [700, 400];
         }
     }
 

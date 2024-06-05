@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, SimpleChanges, OnDestroy } from "@angular/core";
+import { Component, Input, OnChanges, SimpleChanges, OnDestroy, HostListener } from "@angular/core";
 import { Olympic } from "../../core/models/Olympic";
 import { NgxChartsModule } from "@swimlane/ngx-charts";
 import { Subject } from "rxjs";
@@ -30,12 +30,29 @@ export class CountryDetailComponent implements OnChanges, OnDestroy {
         }
     }
 
+    ngOnInit(): void {
+        this.updateView(window.innerWidth);
+    }
+
     getTotalMedals(): number {
         return this.countryData?.participations.reduce((total, p) => total + p.medalsCount, 0) || 0;
     }
 
     getTotalAthletes(): number {
         return this.countryData?.participations.reduce((total, p) => total + p.athleteCount, 0) || 0;
+    }
+
+    @HostListener("window:resize", ["$event"])
+    onResize(event: any) {
+        this.updateView(event.target.innerWidth);
+    }
+
+    private updateView(width: number) {
+        if (width <= 425) {
+            this.view = [400, 300];
+        } else {
+            this.view = [600, 300];
+        }
     }
 
     ngOnDestroy(): void {

@@ -4,3 +4,9 @@
     flex-direction: column;
     align-items: center;
 }
+
+@media (max-width: 425px) {
+    .indicator-container {
+        flex-direction: column;
+    }
+}

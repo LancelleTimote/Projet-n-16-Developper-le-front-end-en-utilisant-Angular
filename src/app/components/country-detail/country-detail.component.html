@@ -1,11 +1,14 @@
 <div *ngIf="countryData" class="country-data-container">
     <h2 class="graph-title">{{ countryData.country }}</h2>
     <div class="indicator-container">
-        <p class="graph-indicator">Number of entries<br />{{ countryData.participations.length }}</p>
-        <p class="graph-indicator">Total number medals<br />{{ getTotalMedals() }}</p>
         <p class="graph-indicator">
-            Total number of athletes<br />
-            {{ getTotalAthletes() }}
+            Number of entries<br /><span>{{ countryData.participations.length }}</span>
+        </p>
+        <p class="graph-indicator">
+            Total number medals<br /><span>{{ getTotalMedals() }}</span>
+        </p>
+        <p class="graph-indicator">
+            Total number of athletes<br /><span>{{ getTotalAthletes() }}</span>
         </p>
     </div>
     <div class="chart-container">

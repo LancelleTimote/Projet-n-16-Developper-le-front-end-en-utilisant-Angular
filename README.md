@@ -46,7 +46,7 @@ Ces derniers souhaitent créer une nouvelle application web interactive pour pr�
 
 ## :checkered_flag: 3. Objectifs du projet <a name = "objectifs_projet"></a>
 
--   Apprendre à utiliser Angular (gestion des composants, système de routing, utilisation de bibliothèques Angular, etc...);
+-   Apprendre à utiliser Angular (gestion des composants, système de routing, utilisation de bibliothèques Angular, etc...).
 
 ## :computer: 4. Technologies utilisées <a name = "technologies_utilisees"></a>
 
@@ -63,6 +63,7 @@ Aucun
 
 -   Cloner ce repository.
 -   Pour installer les différents packages, dans le terminal à partir du dossier front-end, exécuter npm install.
+-   Exécutez ng build pour construire le projet. Les artefacts de construction seront stockés dans le répertoire dist/.
 
 ## :question: 7. Utilisation du site web <a name = "utilisation_siteweb"></a>
 

@@ -42,6 +42,12 @@ body {
     border-radius: 10px;
     border: $tertiary-color 2px solid;
     text-align: center;
+    p {
+        margin: 0;
+    }
+    span {
+        font-weight: bold;
+    }
 }
 
 .indicator-container {

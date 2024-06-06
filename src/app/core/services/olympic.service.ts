@@ -1,5 +1,5 @@
 import { HttpClient } from "@angular/common/http";
-import { Injectable } from "@angular/core";
+import { Injectable, OnDestroy } from "@angular/core";
 import { BehaviorSubject, Observable, of, Subject } from "rxjs";
 import { catchError, takeUntil, tap } from "rxjs/operators";
 import { Olympic } from "../models/Olympic";
@@ -7,11 +7,10 @@ import { Olympic } from "../models/Olympic";
 @Injectable({
     providedIn: "root",
 })
-export class OlympicService {
+export class OlympicService implements OnDestroy {
     private olympicUrl = "./assets/mock/olympic.json";
     private olympics$ = new BehaviorSubject<Olympic[] | null>(null);
-    private unsubscribe$ = new Subject<void>(); // Ajout du sujet de désabonnement
-
+    private unsubscribe$ = new Subject<void>();
     constructor(private http: HttpClient) {
         this.loadInitialData().subscribe();
     }
